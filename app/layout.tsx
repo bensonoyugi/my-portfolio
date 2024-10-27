@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import { recMonoCasual } from "./fonts/fonts";
 import "./globals.css";
 import ThemeProvider from "@/providers/ThemeProvider";
-import ModeToggleButton from "@/components/ModeToggle";
+import ModeToggle from "@/components/ModeToggle";
+import BackgroundBeams from "@/components/BackgroundBeams";
 
 export const metadata: Metadata = {
 	title: "Create Next App",
@@ -16,17 +17,41 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang="en" suppressHydrationWarning>
-			<body className={`${recMonoCasual.className} antialiased bg-page p-24`}>
+			<body
+				className={`${recMonoCasual.className} antialiased bg-page h-screen overflow-hidden`}
+			>
 				<ThemeProvider
 					attribute="class"
 					defaultTheme="system"
 					enableSystem
 					disableTransitionOnChange
 				>
-					<div className="relative w-full h-full">
-						<ModeToggleButton />
+					{/* Central container with content */}
+					<div className="h-full w-full pt-10 px-96 flex flex-col">
+						{/* Relative div containing theme toggle icon and the ContentBox */}
+						<div className="relative h-full w-full mb-24">
+							{/* Absolutely postioned theme toggle icon */}
+							<div className="absolute top-0 right-10">
+								<ModeToggle />
+							</div>
+
+							{/* Content div */}
+							<div className="absolute top-12 bottom-0 right-0 left-0">
+								{/* Relative div to position content and photo */}
+								<div className="relative h-full w-full">
+									{/* Content div */}
+									<div className="absolute top-0 bottom-0 right-0 left-0 border-2 rounded-sm h-full w-full"></div>
+
+									{/* Photo div */}
+									<div>{/*  */}</div>
+								</div>
+
+								<BackgroundBeams />
+							</div>
+						</div>
+
+						<div>Nav</div>
 					</div>
-					{children}
 				</ThemeProvider>
 			</body>
 		</html>

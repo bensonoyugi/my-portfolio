@@ -5,13 +5,12 @@ import { useTheme } from "next-themes";
 
 import { Button } from "@/components/ui/button";
 
-const ModeToggleButton = () => {
+const ModeToggle = () => {
 	const { theme, setTheme } = useTheme();
 
 	return (
 		<Button
-			className="absolute top-10 right-10"
-			variant={"link"}
+			variant={"outline"}
 			size={"icon"}
 			onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
 		>
@@ -21,4 +20,4 @@ const ModeToggleButton = () => {
 	);
 };
 
-export default ModeToggleButton;
+export default ModeToggle;
